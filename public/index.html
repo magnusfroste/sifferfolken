@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sifferfolken – bygg tal med tecken från förr (åk 2–4)</title>
+<meta name="description" content="Bygg talet med egyptiska hieroglyfer och mayafolkets prickar och staplar. Tio ett-tecken blir ett tio-tecken, fem prickar blir en stapel. Tränar talsymbolernas historia, åk 1–3. Gratis, ingen inloggning.">
+<meta name="theme-color" content="#faf7f2">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:title" content="Sifferfolken">
+<meta property="og:description" content="Bygg tal med tecken från forntiden. För åk 1–3.">
+<meta property="og:image" content="og.png">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="styles.css">
+<script src="https://www.skolappar.com/kotten.js" defer></script>
+</head>
+<body>
+
+<div id="startskarm">
+  <div class="sk-inner">
+    <img class="sk-ikon" src="icon-192.png" alt="" width="96" height="96">
+    <h1>Sifferfolken</h1>
+    <p class="sk-tagline">Bygg tal med tecken från förr</p>
+    <div class="sk-taggar"><span>Spel</span><span>Matte</span><span>Åk 1–3</span></div>
+    <button class="sk-play" id="spela" aria-label="Spela Sifferfolken">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+      Spela
+    </button>
+    <p class="sk-fot">Gratis · ingen inloggning · skolappar.com</p>
+    <details class="sk-laroplan">
+      <summary>Läroplanskoppling (Lgr22)</summary>
+      <p><b>Matematik, åk 1–3, centralt innehåll:</b> ”Symboler för tal och symbolernas utveckling i några olika kulturer genom historien.”</p>
+      <p>Egyptierna skrev tal med ett streck för 1, ett hälben för 10 och en repspiral för 100 – tecknet upprepades upp till nio gånger och allt lades ihop. Mayafolket skrev 1 som en prick och 5 som en stapel. Barnet bygger tal med båda systemen, och appen växlar automatiskt tio ett-tecken till ett tio-tecken (fem prickar till en stapel) – samma regel som när vi växlar tio ental till ett tiotal. Till slut jämförs de med våra siffror, som inte byter tecken utan byter plats.</p>
+      <p class="sk-kalla">Fakta: egyptiska hieroglyfer för 1, 10 och 100 (additivt, bas tio) och mayafolkets prick (1) och stapel (5). Källa: Nationellt centrum för matematikutbildning, Nämnaren 2011:2 och 2010; Skolverket, Lgr22.</p>
+    </details>
+  </div>
+</div>
+
+<main id="spel" hidden>
+  <header class="hud">
+    <div class="hud-vanster"><span id="kotten-hud"></span></div>
+    <div class="hud-mitten">
+      <span class="prickar" id="prickar" aria-label="uppgifter klara"></span>
+      <span class="stjarnor" id="stjarnor" aria-label="stjärnor"></span>
+    </div>
+    <div class="hud-hoger">
+      <button class="ikon-knapp" id="hjalp" aria-label="Läs upp talet igen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h3l4-3v12l-4-3H4z"/><path d="M15 8a5 5 0 0 1 0 8"/></svg>
+      </button>
+      <button class="ikon-knapp" id="ljud" aria-label="Ljud på eller av">
+        <svg viewBox="0 0 24 24" aria-hidden="true" id="ljudikon"></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="mal">
+    <span id="kotten" class="mal-kotten"></span>
+    <span class="mal-text" id="mal-tal" aria-live="polite">–</span>
+    <span class="mal-ord" id="mal-ord"></span>
+  </section>
+
+  <section class="brada" id="brada">
+    <svg id="scen" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" aria-label="Brädan där talet byggs"></svg>
+    <p class="brada-summa" id="summa" aria-live="polite">Du har 0</p>
+  </section>
+
+  <footer class="kontroller" id="kontroller">
+    <button class="tecken-knapp" id="knapp-1" aria-label="Lägg till ett-tecknet">
+      <span class="tecken-bit" id="bit-1"></span><span class="tecken-text" id="text-1">1</span>
+    </button>
+    <button class="tecken-knapp" id="knapp-10" aria-label="Lägg till tio-tecknet" hidden>
+      <span class="tecken-bit" id="bit-10"></span><span class="tecken-text" id="text-10">10</span>
+    </button>
+    <button class="tecken-knapp" id="knapp-100" aria-label="Lägg till hundra-tecknet" hidden>
+      <span class="tecken-bit" id="bit-100"></span><span class="tecken-text" id="text-100">100</span>
+    </button>
+    <button class="tecken-knapp" id="knapp-5" aria-label="Lägg till femtecknet" hidden>
+      <span class="tecken-bit" id="bit-5"></span><span class="tecken-text" id="text-5">5</span>
+    </button>
+    <button class="bygg-knapp angra" id="angra" aria-label="Ta bort det sista tecknet">
+      <span class="bygg-text">Ångra</span>
+    </button>
+  </footer>
+</main>
+
+<div id="overlay" hidden>
+  <div class="ov-inner">
+    <div id="ov-bild"></div>
+    <h2 id="ov-titel">Nivån klar</h2>
+    <p id="ov-text"></p>
+    <div class="ov-knappar">
+      <button class="knapp stor" id="ov-nasta">Nästa nivå</button>
+      <button class="knapp tyst" id="ov-igen" hidden>Spela igen</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
