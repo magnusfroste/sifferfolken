@@ -1,7 +1,7 @@
 # Sifferfolken – underlag för katalogen
 
 - **Titel:** Sifferfolken – bygg tal med tecken från förr
-- **URL:** https://sifferfolken.shipholm.dev (och https://sifferfolken.skolappar.com)
+- **URL:** https://sifferfolken.shipholm.dev (och https://sifferfolken.skolappar.org)
 - **Kort beskrivning:** Egyptiernas streck, hälben och repspiral och mayafolkets prickar och staplar – bygg talet och se hur tio ett-tecken blir ett tio-tecken.
 - **Åldrar:** åk 1–3 (7–9 år)
 - **Kategorier:** Matte · Åk 1–3 · Öva · Alla enheter
