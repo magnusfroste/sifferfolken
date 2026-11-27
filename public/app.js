@@ -166,12 +166,7 @@
   function sag(text) {
     if (!ljudPa || !text) return;
           try { if (window.__rost && window.__rost(text, true)) return; } catch (e) { }
-    try {
-      if (!("speechSynthesis" in window)) return;
-      var u = new SpeechSynthesisUtterance(text);
-      u.lang = "sv-SE"; u.rate = 0.95; u.volume = 0.9;
-      window.speechSynthesis.cancel(); window.speechSynthesis.speak(u);
-    } catch (e) { }
+        console.warn('saknar mp3:', text);
   }
   function spar(namn, varde) { try { if (window.skolappar && window.skolappar.event) window.skolappar.event(namn, varde); } catch (e) { } }
 
@@ -407,7 +402,7 @@
     });
     document.getElementById("ljud").addEventListener("click", function () {
       ljudPa = !ljudPa;
-      if (!ljudPa) { try { window.speechSynthesis.cancel(); } catch (e) { } spar("sound_off"); }
+      if (!ljudPa) { try { if (window.__rostStopp) window.__rostStopp(); } catch (e) { } spar("sound_off"); }
       ritaLjudikon();
       this.setAttribute("aria-pressed", ljudPa ? "false" : "true");
     });
